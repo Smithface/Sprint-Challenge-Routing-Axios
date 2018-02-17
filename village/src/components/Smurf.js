@@ -1,4 +1,5 @@
 import React from 'react';
+import './Smurf.css'
 
 class Smurf extends React.Component {
   state = {
@@ -15,20 +16,23 @@ class Smurf extends React.Component {
       <div className="Smurf">
         {editing === true ? (
           <div>
+            <div>Name</div>
             <input type="text" name="smurfName" value={this.state.smurfName} onChange={this.handleChange} />
-            <input type="text" name="smurfHeight" value={this.state.smurfHeight} onChange={this.handleChange} />
+            <div>Age</div>
             <input type="text" name="smurfAge" value={this.state.smurfAge} onChange={this.handleChange} />
-            <button onClick={() => this.updateSmurf()}>Save</button>
+            <div>Height</div>
+            <input type="text" name="smurfHeight" value={this.state.smurfHeight} onChange={this.handleChange} />
+            <button className="background__color-smurf" onClick={() => this.updateSmurf()}>Save</button>
           </div>
         ) : (
           <div>
             <h3>{this.props.name}</h3>
-            <strong>{this.props.height} tall</strong>
-            <p>{this.props.age} old</p>
+            <p>{this.props.age}<br/>years old</p>
+            <strong>{this.props.height}<br/>inches tall</strong>
           </div>
         )}
-        <button onClick={this.toggleEditing}>{ editing ? 'Cancel' : `Modify ${this.props.name}`}</button>
-        <button onClick={() => this.props.onDelete(this.props.id)}>Delete {this.props.name}</button>
+        <button className="background__color-smurf" onClick={this.toggleEditing}>{ editing ? 'Cancel' : `Modify ${this.props.name}`}</button>
+        <button className="background__color-red" onClick={() => this.props.onDelete(this.props.id)}>Delete {this.props.name}</button>
       </div>
     );
   }
